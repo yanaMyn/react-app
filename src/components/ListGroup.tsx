@@ -1,6 +1,12 @@
+import {MouseEvent} from "react";
+
 function ListGroup() {
   let items = ["New York", "Las Vegas", "Miami", "Washington"];
-//   items = [];
+  //   items = [];
+
+  const handleClick = (event: MouseEvent) => {
+    console.log(event);
+  };
 
   return (
     <>
@@ -8,7 +14,9 @@ function ListGroup() {
       {items.length === 0 && <p>No Item Found</p>}
       <ul className="list-group">
         {items.map((item) => (
-          <li className="list-group-item">{item}</li>
+          <li className="list-group-item" onClick={handleClick}>
+            {item}
+          </li>
         ))}
       </ul>
     </>
