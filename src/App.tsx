@@ -1,4 +1,7 @@
+// import Alert from "./components/alert";
+import { useState } from "react";
 import Alert from "./components/alert";
+import Button from "./components/button";
 // import ListGroup from "./components/ListGroup";
 
 function App() {
@@ -8,11 +11,31 @@ function App() {
   //   console.log(item);
   // };
 
+  const [alertVisibility, setAlertVisibility] = useState(true);
+
+  function getAlert() {
+    return (
+      <Alert
+        onDismiss={() => {
+          setAlertVisibility(false);
+        }}
+      >
+        Warning
+      </Alert>
+    );
+  }
+
   return (
     <div>
-      <Alert>
-        <span>Hello World!!!</span>
-      </Alert>
+      {alertVisibility && getAlert()}
+      <Button
+        color="danger"
+        onClick={() => {
+          setAlertVisibility(true);
+        }}
+      >
+        My button
+      </Button>
     </div>
   );
 }
